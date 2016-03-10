@@ -1,0 +1,26 @@
+<footer class="footer">
+    <div class="col-xs-12 teal-copyright-bar text-center vertical-center eighty-grey" ng-hide="isInPath('login')">
+        <div class="row" ng-show="Four51User.isAuthenticated() && user.Type != 'TempCustomer'">
+            <div class="col-12-xs">
+                <p>HELPDESK: <a href="mailto:helpdesk@prograde.com">helpdesk@prograde.com</a></p>
+                <p>CUSTOMER SERVICE: 888-273-1617 and push "0" for assistance or <a href="mailto:helpdesk@prograde.com">csr@prograde.com</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 copyright-center">
+        <div class="row">
+            <p>
+                © 2015 Johns Manville. All Rights Reserved. &nbsp; &nbsp; &nbsp;
+                <span ng-if="!(user.Permissions.contains('HideTerms'))">
+                    <a href="conditions">
+                        Terms of Use
+                    </a>
+                     | 
+                    <a href="contactus">
+                        Contact Us
+                    </a>
+                </span>
+            </p>
+        </div>
+    </div>
+</footer>

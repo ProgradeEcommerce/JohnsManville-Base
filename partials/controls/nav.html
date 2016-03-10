@@ -1,0 +1,47 @@
+<header class="navbar navbar-inner" style="border:0px;">
+    <nav tolerance='20' offset='200' class="navbar navbar-default vertical center" role="navigation" headroom>
+        <section>
+            <div class="new-nav">
+                <ul class="nav navbar-nav eighty-grey">
+                    <li class="animated fadeInLeft" ng-class="{'ng-hide': isActive('catalog')}">
+                        <a href back-step class="vertical-center">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                    </li>
+                    <li class="products">
+                        <a id="451qa_home_link" class="vertical-center" ng-show="Four51User.isAuthenticated()" href="catalog">
+                            <i class="fa fa-home visible-xs"></i>
+                            <span class="hidden-xs">{{'Home' | rc}}</span>
+                        </a>
+                    </li>
+                    <li class="order" ng-class="{'active': isActive('order'), 'active-xs': isActive('favoriteorders')}">
+                        <a id="451qa_order_link" class="vertical-center" href="order">
+                            <i class="fa fa-bar-chart-o visible-xs"></i>
+                            <span class="hidden-xs">{{'Orders' | r}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="451qa_acct_link" class="vertical-center" href="admin">
+                            <i class="fa fa-user visible-xs"></i>
+                            <span class="hidden-xs">{{'Profile' | r}}</span>
+                        </a>
+                    </li>
+                    <li ng-show="user.Type!='TempCustomer'" class="logout">
+                        <a href="#"  class="451_btn_logout vertical-center" ng-click="Logout()">
+                            <i class="fa fa-power-off text-danger visible-xs"></i>
+                            <span class="hidden-xs">{{'Log Out' | r}}</span>
+                        </a>
+                    </li>
+                    <li ng-show="cartCount">
+                        <a id="viewCart" class="vertical-center" href="cart">
+							<span>
+								<i class="fa fa-shopping-cart"></i>
+								<span class="hidden-xs">{{'View Cart' | r}}</span>
+							</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </nav>
+</header>
