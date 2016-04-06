@@ -13,6 +13,7 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
 		when('/listOrders', { templateUrl: 'partials/listOrders.html', controller: 'ListOrdersCtrl' }).
 		when('/orderdetails/:orderid', {templateUrl: 'partials/orderDetails.html', controller: 'OrderDetailsCtrl'}).
         when('/catalog/:categoryInteropID', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
+        when('/catalogkit/:categoryInteropID', { templateUrl: 'partials/kitCategoryView.html', controller: 'KitCategoryCtrl' }).
         when('/catalog', { templateUrl: 'partials/categoryView.html', controller: 'CategoryCtrl' }).
 		when('/kit/:id', {templateUrl: 'partials/kitView.html', controller: 'KitCtrl'}).
 		when('/kit/:id/:lineitemid', {templateUrl: 'partials/kitView.html', controller: 'KitCtrl'}).
@@ -44,5 +45,6 @@ four51.app.config(['$routeProvider', '$locationProvider', function($routeProvide
 		when('/report/:id', { templateUrl: 'partials/Reporting/reportView.html', controller: 'ReportCtrl' }).
 		when('/landing', { templateUrl: 'partials/landingView.html', controller: 'LandingCtrl' }).
 		when('/contactus', { templateUrl: 'partials/Messages/contactus.html' }).
+		when('/gallery', { templateUrl: 'partials/galleryView.html', controller: 'galleryViewCtrl' }).
 		otherwise({redirectTo: '/landing'});
 }]);

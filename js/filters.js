@@ -78,6 +78,7 @@ four51.app.filter('paginate', function() {
 		return input.slice(start);
 	}
 });
+
 four51.app.filter('hideSpecs', function() {
     return function(value) {
         var output = [];
@@ -89,4 +90,21 @@ four51.app.filter('hideSpecs', function() {
         });
         return output;
     }    
+});
+
+four51.app.filter('selectionfilter', function() {
+    return function(value, array) {
+		if (array) {
+			var output = [];
+			angular.forEach(value, function (v) {
+				if (array.indexOf(v.Value) != -1) {
+					output.push(v);
+				}
+
+			});
+			return output;
+		}
+		else
+			return value;
+    }
 });

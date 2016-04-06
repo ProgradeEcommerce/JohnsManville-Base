@@ -16,6 +16,20 @@ four51.app.directive('categorylistview', function() {
     return obj;
 });
 
+four51.app.directive('kitproductview', function() {
+	var obj = {
+		restrict: "E",
+		scope: {
+			p: '=',
+            user: '=',
+            index: '='
+		},
+		templateUrl:'partials/controls/kitProductView.html',
+		controller: 'kitProductViewCtrl'
+	};
+
+	return obj;
+});
 four51.app.directive('shortproductview', function() {
 	var obj = {
 		restrict: "E",

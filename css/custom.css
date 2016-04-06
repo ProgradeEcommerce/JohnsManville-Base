@@ -27,7 +27,8 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 /* Item Image Border */
 .product-image-large {border:1px solid #909090;}
-.thumbnail img {border:1px solid #909090}
+.thumbnail img {border:1px solid #909090;max-height:125px;}
+.kit-thumbnail {cursor:pointer; display:inline-block;}
 
 /*Mobile View Rules*/
 @media (min-width: 768px) and (max-width:982px) {.hidden-768-982 {display:none !important;}}
@@ -37,7 +38,8 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 @media (min-width: 0px) and (max-width:549px) {.visible-550-767 {display:none;}}
 @media (min-width: 768px) {.visible-550-767 {display:none;}}
 
-
+.panel-body, .panel-category-list:not(.no-panels), .panel-product-list:not(.no-panels), .panel-lineitem, .panel-order-history, .panel-order-shipping-multiple {padding:0px 0px 8px;}
+.kith3{margin-top:0px;}
 .navbar-default  {background-color: inherit;}
 .navbar-nav a  {color: #ffffff;}
 .navbar-nav li.active a  {background-color: #0E619B !important; color: #FFFFFF !important;}
@@ -45,6 +47,7 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 body  {background-color: white; overflow-x:hidden;}
 .text-primary  {color: #0C2A3A;}
 .header {background-color:white; margin-top:20px; margin-bottom:20px;}
+@media (max-width: 767px) {.header {margin-bottom:0px;}}
 .text-info  {color: #31708F;}
 body a  {color: black;}
 .btn-primary  {background-color: #00a389;}
@@ -102,8 +105,20 @@ body a  {color: black;}
     align-content:center;
     flex-direction:column;
 }
-.login-center {width:100vw; position: relative; left: calc(-50vw + 50%); padding:1px; background: transparent url("http://logon.prograde.com/JohnsManville/Site/Assets/iStock_000049240758_Large_CROPPED.jpg") no-repeat scroll center top / auto auto; height:800px;}
+input[type="number"] {-moz-appearance:textfield;}
+.login-center {width:100vw; position: relative; left: calc(-50vw + 50%); padding:1px; background: transparent url("http://logon.prograde.com/JohnsManville/Site/Assets/4589149_BathtubOfBliss_Large_x200p_CROPPED.jpg") no-repeat scroll center top / auto auto; height:800px;}
 .view-form-icon > div:not(.panel-heading) {margin:25px 0px 0px;}
+.view-form-icon-2 i {
+    color: #cccccc;
+    left: -40px;
+    position: absolute;
+    top: -2px;
+    z-index: 2;
+    width: 10px;
+    text-align: center;
+    font-size:12px;
+    padding:0px;
+}
 .login-lines {color: #5c903f; font-family:'Helvetica Neue LT Std Thin', sans-serif; font-size:25pt; margin: 0px;}
 .form-control {border-radius:0px;}
 .landing-panel {margin-bottom:30px; margin-top:30px; background-color:#353433;}
@@ -159,7 +174,7 @@ body a  {color: black;}
 }
 .links-nav ul {
    clear:left;
-   float:left;
+   display:inline-block;
    list-style:none;
    margin:0;
    padding:0;
@@ -168,8 +183,7 @@ body a  {color: black;}
    text-align:center;
 }
 .links-nav ul li {
-   display:block;
-   float:left;
+   display:inline-block;
    list-style:none;
    margin:0;
    padding:0;
@@ -188,7 +202,7 @@ body a  {color: black;}
 .link1 i {color:#52247f}
 .link2 i {color:#0096d6}
 .link3 i {color:#00a389}
-.links-nav .nav > li > a:hover {background-color:transparent;}
+.links-nav .nav > li > a:hover, .links-nav .nav > li > a:visited, .links-nav .nav > li > a:focus {background-color:transparent;}
 .whats-new-section .slick-slide {border-left:1px solid black; margin-right:-1px;}
 
 /*Unique Dropdown Styles*/
@@ -276,11 +290,14 @@ body a  {color: black;}
 .company-logo {max-width: 212px; height:auto;}
 .signin-icon {padding-left:35px; color:#00a389}
 .signin-icon:hover {text-decoration:none; color:#05B699;}
+@media (min-width: 768px) {.signin-icon {padding-left:35px;}}
 .top-banner {padding:40px 5px;}
 .get-started, .get-started p {height:100%;}
-.login-image {width:100vw; position: relative; left: calc(-50vw + 50%); padding:1px; background: transparent url("https://prowebservicehost.com/sites/johns%20manville/images/iStock_000074542023_Large_TEXT.jpg") no-repeat scroll center top / auto auto; height:800px;}
-.new-nav .navbar-nav {float:right;}
-.category-image {width:100vw; position: relative; left: calc(-50vw + 50%); padding:1px; background: transparent url("https://prowebservicehost.com/sites/johns%20manville/images/iStock_000038703276_Large_CROPPED.jpg") no-repeat scroll center top / auto auto; height:800px;}
+.login-image {width:100vw; position: relative; left: calc(-50vw + 50%);}
+.landing-image {max-width:100%; background-image: url("https://prowebservicehost.com/sites/johns%20manville/images/landing.jpg");}
+#category-image {width:100vw; position: relative; left: calc(-50vw + 50%); padding:1px; background: transparent url("https://prowebservicehost.com/sites/johns%20manville/images/slider1.jpg") no-repeat scroll center top / auto auto; height:800px;}
+@media (min-width:768px) {.new-nav .navbar-nav {float:right;}}
+@media (max-width:767px) {.new-nav .navbar-nav {display:inline-block;}}
 .cat-nav .sub-subcats li {padding:0px; display:block;}
 .eighty-grey, .eighty-grey li a span {color:#58595b;}
 #dropdownCatName {padding-top:7px; padding-bottom:25px; width:100%; cursor:pointer;}
@@ -291,3 +308,13 @@ body a  {color: black;}
 .continue-to-site {height:72px;}
 .continue-to-site a:hover {cursor:default;}
 .continue-to-site a h4:hover {cursor:pointer; color:#867A7A;}
+.inline-block {display:inline-block;}
+.gallery-chevron {margin:0px 100px; font-size:25pt; color:#006CB7;}
+.gallery-chevron:hover {cursor:pointer;}
+.download-btn, .download-btn:hover, .download-btn:focus {width:150px; color:white; background-color:#006CB7;}
+@media (min-width:992px) {.youtube-video {height:450px; width:800px;}}
+@media (min-width:610px) and (max-width:991px) {.youtube-video {height:337.5px; width:600px;}}
+@media (min-width:410px) and (max-width:609px) {.youtube-video {height:225px; width:400px;}}
+@media (max-width:409px) {.youtube-video {height:168.75px; width:300px;}}
+@media (max-width:767px) {.catalog-search-row {text-align:center;}}
+@media (min-width:768px) {.catalog-search-row {text-align:right;}}

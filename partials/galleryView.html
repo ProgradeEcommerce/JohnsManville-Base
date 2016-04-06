@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <i class="fa fa-chevron-left inline-block gallery-chevron" ng-click="previousImage()"/>
+        <img class="img-responsive inline-block" ng-src="https://prowebservicehost.com/sites/johns%20manville/images/gallery/{{downloadableImages[currentIndex]['New Item Code']}}.jpg" >
+        <i class="fa fa-chevron-right inline-block gallery-chevron" ng-click="nextImage()"/>
+    </div>
+    <div class="col-xs-12 text-center">
+        <br />
+        <a class="btn download-btn" ng-href="https://www.prowebservicehost.com/download.php?file=sites/johns%20manville/images/gallery/{{downloadableImages[currentIndex]['New Item Code']}}.jpg" download="{{downloadableImages[currentIndex].Title}}.jpg" target="_blank">Download</a>
+    </div>
+</div>
+<br />
+<hr style="border:1px solid #006cb7;" />
+<br />
+<div class="451qa_prod_item row">
+    <div ng-repeat="(index, image) in downloadableImages" class="col-md-2 col-xs-3 text-left" ng-click="updateCurrentImage(index)">
+        <img class="img-responsive" id="productImage" ng-src="https://prowebservicehost.com/sites/johns%20manville/images/gallery/{{downloadableImages[index]['New Item Code']}}.jpg"/>
+        <p class="text-center"><strong>{{downloadableImages[index].Title}}</strong></p>
+    </div>
+</div>

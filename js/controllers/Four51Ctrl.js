@@ -52,6 +52,12 @@ function ($scope, $route, $location, $451, User, Order, Security, OrderConfig, C
 					else
 						$location.path('landing');
 				}
+				
+				angular.forEach($scope.user.CustomFields, function(field) {
+					if (field.Name == 'JM-DealerNames') {
+						$scope.dealers = field.Value.split('|');
+					}
+				});
 					
 
 			});

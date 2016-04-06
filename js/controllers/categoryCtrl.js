@@ -1,12 +1,19 @@
-four51.app.controller('CategoryCtrl', ['$routeParams', '$sce', '$scope', '$451', 'Category', 'Product', 'Nav', '$location',
-function ($routeParams, $sce, $scope, $451, Category, Product, Nav, $location) {
+four51.app.controller('CategoryCtrl', ['$routeParams', '$sce', '$scope', '$451', '$window', '$interval','Category', 'Product', 'Nav', '$location',
+function ($routeParams, $sce, $scope, $451, $window, $interval, Category, Product, Nav, $location) {
 	$scope.productLoadingIndicator = true;
+	$scope.slideImage = 1;
 	$scope.settings = {
 		currentPage: 1,
 		pageSize: 40
 	};
 	$scope.trusted = function(d){
 		if(d) return $sce.trustAsHtml(d);
+	}
+    
+	$interval(slideImages, 5000);
+	
+	function slideImages(){
+	    $scope.slideImage = ($scope.slideImage % 3) + 1;
 	}
 
 	function _search() {

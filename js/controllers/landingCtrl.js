@@ -1,4 +1,4 @@
-four51.app.controller('LandingCtrl', ['$scope','$location','Order','User','Category','Product', function ($scope,$location,Order,User,Category,Product) {
+four51.app.controller('LandingCtrl', ['$scope','$location','$window','Order','User','Category','Product', function ($scope,$location,$window,Order,User,Category,Product) {
 	
     $scope.goSalesSupport = function () {
 		if ($scope.cartCount && $scope.CrossPageVars.currentCategory && $scope.CrossPageVars.currentCategory.InteropID != 'MillSalesSupportItems') {
@@ -47,4 +47,22 @@ four51.app.controller('LandingCtrl', ['$scope','$location','Order','User','Categ
 			);
 		}
 	};
+    
+    $scope.calcHeight = _calcHeight();
+    $(window).resize(function(){
+        $scope.$apply(function(){
+            _calcHeight();
+        });
+    });
+    
+    function _calcHeight() {
+        var baseHeight = 800;
+        var baseWidth = 1920;
+        var newWidth = $window.innerWidth;
+        var newHeight = newWidth * baseHeight / baseWidth;
+        var top = newHeight / 2 + 29.14;
+        console.log($window.innerWidth)
+        $scope.top = '-' + top + 'px';
+    }
+    
 }]);

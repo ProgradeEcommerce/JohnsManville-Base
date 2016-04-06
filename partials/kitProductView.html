@@ -1,0 +1,70 @@
+<div class="451qa_prod_item row" ng-swipe-left="showSwipe = true">
+    <div class="col-sm-4 text-center">
+        <div class="thumbnail">
+            <figure ng-show="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl" >
+                <img ng-click="open()" class="kit-thumbnail" ng-src="{{LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl}}"/>
+            <i class="fa fa-search"></i>
+            </figure>
+            <div class="empty" ng-hide="LineItem.Variant.SmallImageUrl || LineItem.Product.SmallImageUrl">
+                <span class="fa empty"><i class="fa fa-camera"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 text-left">
+        <div class="panel-body">
+            <h3 class="kith3">{{LineItem.Product.Name}}
+                <small class="pull-right text-info">{{LineItem.Product.ExternalID}}</small>
+            </h3>
+            <section class="hidden-xs hidden-sm panel-body">
+				<div class="row">
+					<div class="col-xs-4">
+						<p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
+							{{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
+							<span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
+							{{'for' | xlat}} {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
+						</p>
+					</div>
+					<div class="col-xs-6">
+						<p ng-show="LineItem.Product.UnitOfMeasure">
+							{{'Unit of Measure' | r | xlat}}: {{LineItem.Product.UnitOfMeasure}}
+						</p>
+						<p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
+							{{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
+						</p>
+					</div>
+					<div class="col-xs-2">
+						<p >
+							<kitquantityfield required="true" lineitem="LineItem" class="quantity" index="index" />
+						</p>
+					</div>
+				</div>
+            </section>
+        </div>
+    </div>
+    <section class="hidden-lg hidden-md" ng-show="showSwipe" ng-swipe-right="showSwipe = false">
+        <div class="shortproduct-info panel-body text-center">
+            <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
+                {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
+                <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
+                {{'for' | xlat}} {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}
+            </p>
+            <p ng-show="LineItem.Product.UnitOfMeasure">
+                {{'Unit of Measure' | r | xlat}}: {{LineItem.Product.UnitOfMeasure}}
+            </p>
+            <p ng-show="inventoryDisplay(LineItem.Product, LineItem.Variant)">
+                {{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
+            </p>
+            <button class="btn btn-default" redirect="product/{{LineItem.Product.InteropID}}">
+                {{('View' | r) + ' ' + ('Product' | r) | xlat}}
+            </button>
+        </div>
+    </section>
+</div>
+<script type="text/ng-template" id="viewLightboxModal.html">
+	<div class="vertical-center">
+		<img id="451_img_prod_lg" class="img-responsive img-center" style="border:1px solid black; margin:10px;" ng-src="{{LineItem.Product.LargeImageUrl}}" imageonload />
+	</div>
+    <div class="category-modal-footer modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    </div>
+</script>

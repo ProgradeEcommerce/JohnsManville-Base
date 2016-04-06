@@ -1,4 +1,4 @@
-four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product', function($sce, $451, Variant, Product){
+four51.app.factory('KitProductDisplayService', ['$sce', '$451', 'Variant', 'Product', function($sce, $451, Variant, Product){
 	function calcTotal(lineItem){
 
 		var ps = lineItem.PriceSchedule;
@@ -145,20 +145,6 @@ four51.app.factory('ProductDisplayService', ['$sce', '$451', 'Variant', 'Product
 			calcTotal(scope.LineItem);
 
 		}
-		
-		scope.emailLogo = function(spec){
-			scope.LineItem.Specs['Mailing_Custom:Logo'].Value = spec.Value;
-		}
-		
-		scope.locationsTemplate = function(spec){
-			if (spec.Value == '1')
-				scope.LineItem.Specs.Mailing_TemplateID.Value = '12731454';
-			else if (spec.Value == '2')
-				scope.LineItem.Specs.Mailing_TemplateID.Value = '12757856';
-			else if (spec.Value == '3')
-				scope.LineItem.Specs.Mailing_TemplateID.Value = '12757857';
-		}
-		
 		scope.trustedDescription = function(p){
 			if(p) return $sce.trustAsHtml(p.Description);
 		}

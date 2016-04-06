@@ -124,6 +124,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Resou
 			if (item.IsKitParent)
 				$scope.cart.$setValidity('kitValidation', !item.KitIsInvalid);
 			newTotal += item.LineTotal;
+			formatDate(item);
 		});
 		$scope.currentOrder.Subtotal = newTotal;
 	}, true);
@@ -165,4 +166,38 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Resou
         });
     };
 	
+	function formatDate(item) {
+		if (item.Specs.Date.Value && item.Specs.Time.Value) {
+			var timezoneOffset = new Date().getTimezoneOffset();
+			var timezoneOffsetH = timezoneOffset / 60;
+			var dateM = parseFloat(item.Specs.Date.Value.slice(0,2));
+			var dateD = parseFloat(item.Specs.Date.Value.slice(3,5));
+			var dateY = parseFloat(item.Specs.Date.Value.slice(6,10));
+			var date = dateM + "/" + dateD + "/" + dateY;
+			var timeH = parseFloat(item.Specs.Time.Value.slice(11,13));
+			var timeH = timeH - timezoneOffsetH;
+			var timeMin = parseFloat(item.Specs.Time.Value.slice(14,16));
+			if (timeMin < 10) {
+				timeMin = "0" + timeMin;
+			}
+			if (timeH > 12) {
+				var timeMer = 'PM';
+				timeH = timeH - 12;
+			}
+			else if (timeH == 12)
+				var timeMer = 'PM';
+			else if (timeH == 0) {
+				timeH = 12;
+				var timeMer = 'AM';
+			}
+			else if (timeH < 0) {
+				timeH = 12 + timeH;
+				var timeMer = 'PM';
+			}
+			else
+				var timeMer = 'AM';
+			var time = timeH + ":" + timeMin + " " + timeMer;
+			item.Specs.Mailing_Date.Value = date + " " + time;
+		}
+	}
 }]);
